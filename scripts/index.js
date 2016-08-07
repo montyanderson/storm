@@ -5,8 +5,15 @@ const search = Hogan.compile(`
         <div class='card small'>
             <div class='card-image {{color}} artist'>
                 <img src='{{image}}'>
-                <span class='card-title'>{{name}}</span>
+                <span class='card-title grey-text'>{{name}}</span>
           	</div>
+
+			<div class="row">
+				{{#genres}}
+					<a href="#" class="btn">{{.}}</a>
+				{{/genres}}
+			</div>
+
         </div>
     {{/artists}}
 `);

@@ -23,7 +23,9 @@ app.get("/search", function(req, res) {
 		})).then((response) => {
 			const artists = JSON.parse(response.body).artists.items.map((a) => {
 				const b = {
-					name: a.name
+					name: a.name,
+					id: a.id,
+					genres: a.genres
 				};
 
 				if(a.images[0]) b.image = a.images[0].url;
