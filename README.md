@@ -23,4 +23,4 @@ $ npm run dev
 $ nodemon index.js --lastfm d9bb1870d3269646f740544d9def2c95 --spotify f946296624e1496f9a1f6310973c744b
 ```
 
-![Screenshot](https://i.imgur.com/cKEJu2m.png)
+![Screenshot](http://i64.tinypic.com/120jq61.jpg)

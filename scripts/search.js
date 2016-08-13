@@ -1,5 +1,6 @@
 const Hogan = require("hogan.js");
 const View = require("./view.js");
+const sources = require("./sources.js");
 
 const search = module.exports = new View(`
 	{{#artists}}
