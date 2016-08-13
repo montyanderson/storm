@@ -1,0 +1,20 @@
+body {
+  color: green;
+}
+.card.small .card-image {
+  height: 80px;
+}
+.card.small .card-image span {
+  padding: 20px 20px 2px 17px;
+}
+.card.small .card-content {
+  height: 30px;
+  padding: 9px;
+}
+.card.small .card-image img {
+  object-fit: cover;
+  height: 80px;
+}
+#playlist {
+  width: 100%;
+}

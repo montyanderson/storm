@@ -19,14 +19,17 @@
   },
   "homepage": "https://github.com/montyanderson/storm#readme",
   "dependencies": {
+    "async": "^2.0.1",
     "babel-preset-es2015": "^6.13.2",
     "babelify": "^7.3.0",
     "browserify": "^13.1.0",
     "express": "^4.14.0",
     "got": "^6.3.0",
     "gulp": "^3.9.1",
+    "gulp-less": "^3.1.0",
     "hogan.js": "^3.0.2",
     "redis": "^2.6.2",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-source-stream": "^1.1.0",
+    "yargs": "^4.8.1"
   }
 }
