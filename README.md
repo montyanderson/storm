@@ -1,6 +1,7 @@
 # storm
+ [![dependencies Status](https://david-dm.org/montyanderson/storm/status.svg)](https://david-dm.org/montyanderson/storm)
 
-A Spotify playlist generator. Rewrite of [SmartPlay](https://github.com/montyanderson/SmartPlay).
+> A Spotify playlist generator. Rewrite and successor of [SmartPlay](https://github.com/montyanderson/SmartPlay).
 
 ![Screenshot](http://i64.tinypic.com/120jq61.jpg)
 
