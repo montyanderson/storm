@@ -16,6 +16,7 @@ module.exports = [
 	},
 	(req, res, next) => {
 		res.locals.results = [];
+		req.query.q = req.query.q.trim().toLowerCase();
 		next();
 	},
 	(req, res, next) => { /* get artists from spotify */

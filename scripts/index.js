@@ -1,39 +1,5 @@
 const View = require("./view.js");
-
-const search = new View(`
-	{{#artists}}
-        <div class='card small' data-id="{{id}}" data-type='{{{type}}}'>
-            <div class='card-image {{color}}'>
-                <img src='{{image}}'>
-                <span class='card-title'>{{name}}</span>
-          </div>
-                <div class='card-content'>
-                    {{#data}}
-                        <p>{{0}}: <span>{{1}}</span></p>
-                    {{/data}}
-              </div>
-          </div>
-	{{/artists}}
-`, (view) => {
-	$(".search-results").html(view);
-
-	$(".search-results .card").click(function() {
-		const card = $(this);
-
-		sources.locals.sources = sources.locals.sources || [];
-
-		const id = card.attr("data-id");
-		const type = card.attr("data-type");
-
-		if(sources.locals.sources.filter(a => a.id == id).length == 0) {
-			sources.locals.sources.push({
-				id, type
-			});
-		}
-
-		sources.render();
-	});
-});
+const search = require("./search.js");
 
 const sources = new View(`
 	{{#sources}}
