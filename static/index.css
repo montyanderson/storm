@@ -1,6 +1,9 @@
 body {
   color: green;
 }
+.card.small {
+  height: 110px;
+}
 .card.small .card-image {
   height: 80px;
 }

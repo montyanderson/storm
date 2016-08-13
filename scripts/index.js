@@ -2,21 +2,17 @@ const View = require("./view.js");
 
 const search = new View(`
 	{{#artists}}
-		<div class='card small' data-id="{{id}}" data-image="{{image}}" data-type="{{type}}">
-			<div class='card-image {{color}} artist'>
-				<img src='{{image}}'>
-				<span class='card-title grey-text'>{{name}}</span>
-			</div>
-
-			<div class="row">
-				{{{description}}}
-
-				{{#genres}}
-					<a href="#" class="btn">{{.}}</a>
-				{{/genres}}
-			</div>
-
-		</div>
+        <div class='card small' data-id="{{id}}" data-type='{{{type}}}'>
+            <div class='card-image {{color}}'>
+                <img src='{{image}}'>
+                <span class='card-title'>{{name}}</span>
+          </div>
+                <div class='card-content'>
+                    {{#data}}
+                        <p>{{0}}: <span>{{1}}</span></p>
+                    {{/data}}
+              </div>
+          </div>
 	{{/artists}}
 `, (view) => {
 	$(".search-results").html(view);
