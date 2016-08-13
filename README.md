@@ -5,6 +5,10 @@
 
 ![Screenshot](http://i64.tinypic.com/120jq61.jpg)
 
+## To Do
+
+* Extend caching to playlist generation... (make api specific wrappers?)
+* Security - validate inputs
 
 ## Development
 
