@@ -1,6 +1,6 @@
 # storm
 
-Rewrite of [SmartPlay](https://github.com/montyanderson/SmartPlay).
+A Spotify playlist generator. Rewrite of [SmartPlay](https://github.com/montyanderson/SmartPlay).
 
 ![Screenshot](http://i64.tinypic.com/120jq61.jpg)
 
