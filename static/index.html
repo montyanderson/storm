@@ -6,13 +6,6 @@
 
 		<meta charset="utf-8">
 
-		<style>
-			body { background-color: #eeeeee; }
-			.artist img {
-				vertical-align: middle;
-			}
-		</style>
-
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" rel="stylesheet">
 		<link href="/index.css" rel="stylesheet">
 
@@ -29,16 +22,18 @@
 
 		<div class="container">
 			<div class="row">
-				<div class="col s6">
-					<input id="search">
-					<div class="search-results"></div>
+				<div class="col s12 m6">
+					<div class="row">
+						<button class="btn btn-orange col s12" id="generate">Make a storm...</button>
+
+						<div class="sources"></div>
+						<div class="playlist"></div>
+					</div>
 				</div>
 
-				<div class="col s6">
-					<button class="btn btn-orange" id="generate">Make a storm...</button>
-
-					<div class="sources"></div>
-					<div class="playlist"></div>
+				<div class="col s12 m6">
+					<input id="search">
+					<div class="search-results"></div>
 				</div>
 			</div>
 		</div>

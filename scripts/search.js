@@ -4,12 +4,12 @@ const sources = require("./sources.js");
 
 const search = module.exports = new View(`
 	{{#artists}}
-        <div class='card small' data-id="{{id}}" data-type='{{{type}}}'>
-            <div class='card-image red {{#color}}{{name}}{{/color}}'>
-                <img src='{{image}}'>
-                <span class='card-title'>{{name}}</span>
+        <div class="card small" data-id="{{id}}" data-type="{{{type}}}" data-name="{{name}}">
+            <div class="card-image red {{#color}}{{name}}{{/color}}">
+                <img src="{{image}}">
+                <span class="card-title">{{name}}</span>
           </div>
-                <div class='card-content'>
+                <div class="card-content">
 					{{{description}}}
               </div>
           </div>
@@ -21,6 +21,8 @@ const search = module.exports = new View(`
 		const card = $(this);
 
 		sources.locals.sources = sources.locals.sources || [];
+
+		console.log(card.data());
 
 		const id = card.attr("data-id");
 		const type = card.attr("data-type");
@@ -35,14 +37,4 @@ const search = module.exports = new View(`
 	});
 });
 
-search.locals.color = function() {
-	const colors = ["red", "blue"];
-
-	return function(template) {
-		const text = Hogan.compile(template).render(this);
-		let sum = 0;
-
-		text.split("").forEach(c => sum += c.charCodeAt());
-		return colors[sum % colors.length];
-	};
-};
+search.locals.color = require("./color.js");

@@ -27,6 +27,7 @@
     "got": "^6.3.0",
     "gulp": "^3.9.1",
     "gulp-less": "^3.1.0",
+    "helmet": "^2.1.2",
     "hogan.js": "^3.0.2",
     "redis": "^2.6.2",
     "vinyl-source-stream": "^1.1.0",

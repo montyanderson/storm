@@ -21,7 +21,11 @@ $("#search").keyup(() => {
 $("#generate").click(() => {
 	$.ajax({
 		url: "/generate",
-		data: {q: JSON.stringify(sources.locals.sources)},
+		data: {
+			q: JSON.stringify(sources.locals.sources.map((card) => {
+				return {type: card.type, id: card.id}
+			}))
+		},
 		success: (res) => {
 			playlist.render({songs: JSON.parse(res).join(",")});
 		}

@@ -14,6 +14,7 @@ module.exports = [
 		}
 
 		res.locals.tracks = [];
+		res.locals.lastfmTracks = [];;
 		next();
 	},
 	(req, res, next) => { /* get tracks for artists from spotify */
@@ -31,25 +32,48 @@ module.exports = [
 			next();
 		});
 	},
-	(req, res, next) => { /* gets top tracks for a tag then search for them on spotify */
-		async.map(res.locals.cards.filter(a => a.type == "tag"), (tag, callback) => {
+	(req, res, next) => { /* gets top tracks for a tag  */
+		async.each(res.locals.cards.filter(a => a.type == "tag"), (tag, callback) => {
 			got("https://ws.audioscrobbler.com/2.0/?" + querystring.stringify({
 				api_key: config.lastfm,
 				tag: tag.id,
 				method: "tag.gettoptracks",
 				format: "json"
 			})).then((response) => {
-				async.map(JSON.parse(response.body).tracks.track.slice(0, 6), (track, callback) => {
-					got("https://api.spotify.com/v1/search?" + querystring.stringify({
-						q: track.name + " " + track.artist.name,
-						type: "track"
-					})).then((response) => {
-						callback(null, JSON.parse(response.body).tracks.items[0].id);
-					}).catch(callback);
-				}, callback);
+				const tracks = JSON.parse(response.body).tracks.track.slice(0, 10);
+
+				shuffle(tracks);
+
+				tracks.slice(0, 6).forEach((track) => {
+					res.locals.lastfmTracks.push({
+						name: track.name,
+						artist: track.artist.name
+					});
+				});
+
+				callback();
 			}).catch(callback);
-		}, (err, tags) => {
-			tags.forEach(tag => res.locals.tracks.push(...tag));
+		}, next);
+	},
+	(req, res, next) => { /* resolve last.fm tracks */
+		async.map(res.locals.lastfmTracks, (track, callback) => {
+			const q = (track.name + " " + track.artist).trim().toLowerCase();
+			const key = "track:" + q;
+
+			db.get(key, (err, id) => {
+				if(id) return callback(null, id);
+
+				got("https://api.spotify.com/v1/search?" + querystring.stringify({
+					q, type: "track"
+				})).then((response) => {
+					const id = JSON.parse(response.body).tracks.items[0].id;
+					db.set(key, id, () => {
+						callback(null, id);
+					});
+				}).catch(callback);
+			});
+		}, (err, tracks) => {
+			res.locals.tracks.push(...tracks);
 			next();
 		});
 	},

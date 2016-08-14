@@ -1,9 +1,11 @@
 const View = require("./view.js");
 
 const sources = module.exports = new View(`
-	{{#sources}}
-		{{type}} {{id}}
-	{{/sources}}
+	<ul class="collection">
+		{{#sources}}
+		<li class="collection-item">{{id}}</li>
+		{{/sources}}
+	</ul>
 `, (view) => {
 	$(".sources").html(view);
 });
