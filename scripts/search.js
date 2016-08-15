@@ -22,7 +22,7 @@ const search = module.exports = new View(`
 
 		sources.locals.sources = sources.locals.sources || [];
 
-		if(sources.locals.sources.filter(a => a.id == id).length == 0) {
+		if(sources.locals.sources.filter(a => a.id == $(card).data("id")).length == 0) {
 			sources.locals.sources.push(card.data());
 		}
 
