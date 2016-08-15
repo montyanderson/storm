@@ -91,7 +91,8 @@ module.exports = [
 		next();
 	},
 	(req, res, next) => { /* serve tracks */
-		res.end(JSON.stringify(res.locals.tracks));
-		console.log("Playlist generated in " + (((new Date()) - res.locals.start) / 1000) + " seconds.");
+		db.incr("playlists", () => {
+			res.end(JSON.stringify(res.locals.tracks));
+		});
 	}
 ];
