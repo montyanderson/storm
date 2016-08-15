@@ -7,6 +7,8 @@ const shuffle = require("../lib/shuffle.js");
 
 module.exports = [
 	(req, res, next) => { /* parse cards json */
+		res.locals.start = new Date();
+
 		try {
 			res.locals.cards = JSON.parse(req.query.q);
 		} catch(err) {
@@ -19,7 +21,7 @@ module.exports = [
 	},
 	(req, res, next) => { /* get tracks for artists from spotify */
 		async.map(res.locals.cards.filter(a => a.type == "artist"), (artist, callback) => {
-			got("https://api.spotify.com/v1/artists/" + artist.id + "/top-tracks?country=GB").then((response) => {
+			got("https://api.spotify.com/v1/artists/" + escape(artist.id) + "/top-tracks?country=GB").then((response) => {
 				const data = JSON.parse(response.body);
 
 				callback(null, data.tracks.map(track => track.id));
@@ -44,7 +46,7 @@ module.exports = [
 
 				shuffle(tracks);
 
-				tracks.slice(0, 6).forEach((track) => {
+				tracks.slice(0, 6).filter(t => !!t).forEach((track) => {
 					res.locals.lastfmTracks.push({
 						name: track.name,
 						artist: track.artist.name
@@ -61,14 +63,21 @@ module.exports = [
 			const key = "track:" + q;
 
 			db.get(key, (err, id) => {
-				if(id) return callback(null, id);
+				if(id) {
+					console.log("from cache : )");
+					return callback(null, id);
+				}
 
 				got("https://api.spotify.com/v1/search?" + querystring.stringify({
 					q, type: "track"
 				})).then((response) => {
+					console.log("from api : )");
 					const id = JSON.parse(response.body).tracks.items[0].id;
-					db.set(key, id, () => {
-						callback(null, id);
+					db.multi()
+						.set(key, id)
+						.expire(key, 60 * 60 * 24 * 7)
+						.exec(() => {
+							callback(null, id);
 					});
 				}).catch(callback);
 			});
@@ -83,5 +92,6 @@ module.exports = [
 	},
 	(req, res, next) => { /* serve tracks */
 		res.end(JSON.stringify(res.locals.tracks));
+		console.log("Playlist generated in " + (((new Date()) - res.locals.start) / 1000) + " seconds.");
 	}
 ];

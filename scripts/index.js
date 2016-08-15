@@ -3,7 +3,11 @@ const search = require("./search.js");
 const sources = require("./sources.js");
 
 const playlist = new View(`
-	<iframe id="playlist" src="https://embed.spotify.com/?uri=spotify:trackset:Storm Playlist:{{{songs}}}" frameborder="0" allowtransparency="true" width=100% height=380></iframe>
+	<div class="row">
+		<a href="spotify:trackset:Playlist:{{{songs}}}">Open in Spotify</a>
+
+		<iframe class="col s12" src="https://embed.spotify.com/?uri=spotify:trackset:Storm Playlist:{{{songs}}}" frameborder="0" height=500 allowtransparency="true"></iframe>
+	</div>
 `, (view) => {
 	$(".playlist").html(view);
 });

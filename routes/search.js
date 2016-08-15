@@ -70,7 +70,7 @@ module.exports = [
 
 		db.multi()
 			.set("search:" + req.query.q, res.locals.data)
-			.expire("search:" + req.query.q, 60 * 60 * 1)
+			.expire("search:" + req.query.q, 60 * 60 * 24 * 7)
 			.exec(() => {
 				next();
 			});

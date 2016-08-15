@@ -14,4 +14,4 @@ if(!config.noStatic) {
 app.get("/search", ...require("./routes/search.js"));
 app.get("/generate", ...require("./routes/generate.js"));
 
-app.listen(8080);
+app.listen(process.env.PORT);
