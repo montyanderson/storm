@@ -7,7 +7,7 @@ const sources = module.exports = new View(`
 
 	<ul class="collection">
 		{{#sources}}
-		<li class="collection-item">{{id}}</li>
+		<li class="collection-item">{{#name}}{{name}}{{/name}}{{^name}}{{id}}{{/name}}</li>
 		{{/sources}}
 	</ul>
 `, (view) => {

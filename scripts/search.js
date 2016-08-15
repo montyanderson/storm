@@ -22,15 +22,8 @@ const search = module.exports = new View(`
 
 		sources.locals.sources = sources.locals.sources || [];
 
-		console.log(card.data());
-
-		const id = card.attr("data-id");
-		const type = card.attr("data-type");
-
 		if(sources.locals.sources.filter(a => a.id == id).length == 0) {
-			sources.locals.sources.push({
-				id, type
-			});
+			sources.locals.sources.push(card.data());
 		}
 
 		sources.render();
