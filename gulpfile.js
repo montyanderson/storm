@@ -6,6 +6,7 @@ const source = require("vinyl-source-stream");
 gulp.task("scripts", () => {
 	browserify("./scripts/index.js")
 		.transform("babelify", {presets: ["es2015"]})
+		.transform("uglifyify", {global: true})
 		.bundle()
 		.on("error", (error) => console.log(error.toString()))
 		.pipe(source("index.js"))

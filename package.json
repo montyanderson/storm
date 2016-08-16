@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "eslint routes/*.js scripts/*.js *.js",
     "dev": "gulp dev",
-    "prepublish": "gulp",
-    "test": "eslint routes/*.js scripts/*.js *.js"
+    "prepublish": "gulp"
   },
   "repository": {
     "type": "git",
@@ -32,6 +31,7 @@
     "helmet": "^2.1.2",
     "hogan.js": "^3.0.2",
     "redis": "^2.6.2",
+    "uglifyify": "^3.0.2",
     "vinyl-source-stream": "^1.1.0",
     "yargs": "^4.8.1"
   }
