@@ -9,6 +9,7 @@ app.use(helmet());
 
 app.use((req, res, next) => {
 	res.set("X-Process", process.env.PROCESS);
+	next();
 });
 
 if(!config.noStatic) {
