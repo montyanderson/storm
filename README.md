@@ -5,6 +5,11 @@
 
 [![Screenshot](http://i68.tinypic.com/d8k08.png)](http://storm.montyanderson.net)
 
+## Log
+
+* 15th August 2016 - storm launches
+* 16th August 2016 - overwhelming response! Over 125 playlists made in just 24 hours!
+
 ## To Do
 
 * Extend caching to playlist generation... (make api specific wrappers?)
