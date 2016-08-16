@@ -7,6 +7,10 @@ const app = express();
 
 app.use(helmet());
 
+app.use((req, res, next) => {
+	res.set("X-Process", process.env.PROCESS);
+});
+
 if(!config.noStatic) {
 	app.use(express.static(__dirname + "/static"));
 }

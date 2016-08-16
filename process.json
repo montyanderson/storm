@@ -5,6 +5,7 @@
 		max_memory_restart: "100M",
 		args: "--lastfm d9bb1870d3269646f740544d9def2c95 --spotify f946296624e1496f9a1f6310973c744b",
 		env: {
+			PROCESS: "storm-01",
 			NODE_ENV: "production",
 			PORT: 8000
 		}
@@ -14,6 +15,7 @@
 		max_memory_restart: "100M",
 		args: "--lastfm d9bb1870d3269646f740544d9def2c95 --spotify f946296624e1496f9a1f6310973c744b",
 		env: {
+			PROCESS: "storm-02",
 			NODE_ENV: "production",
 			PORT: 8001
 		}
