@@ -87,7 +87,7 @@ module.exports = [
 		});
 	},
 	(req, res, next) => { /* randomly shuffle array */
-		shuffle(res.locals.tracks);
+		res.locals.tracks.sort((a, b) => Math.round(Math.random()) * 2 - 1);
 		next();
 	},
 	(req, res, next) => { /* serve tracks */
