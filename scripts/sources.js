@@ -7,11 +7,17 @@ const sources = module.exports = new View(`
 
 	<ul class="collection">
 		{{#sources}}
-		<li class="collection-item">{{#name}}{{name}}{{/name}}{{^name}}{{id}}{{/name}}</li>
+		<li class="collection-item">{{name}}{{^name}}{{id}}{{/name}}<a href="#!" class="secondary-content"><i class="material-icons delete" data-id="{{id}}">delete</i></a></li>
 		{{/sources}}
 	</ul>
 `, (view) => {
 	$(".sources").html(view);
+
+	$(".sources .delete").click(function() {
+		const id = $(this).data("id");
+		sources.locals.sources = sources.locals.sources.filter(a => a.id != id);
+		sources.render();
+	});
 
 	$("#generate").click(() => {
 		$.ajax({
