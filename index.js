@@ -16,6 +16,7 @@ if(!config.noStatic) {
 	app.use(express.static(__dirname + "/static"));
 }
 
+app.get("/", ...require("./routes/index.js"));
 app.get("/search", ...require("./routes/search.js"));
 app.get("/generate", ...require("./routes/generate.js"));
 
