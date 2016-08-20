@@ -16,7 +16,7 @@ module.exports = [
 		}
 
 		res.locals.tracks = [];
-		res.locals.lastfmTracks = [];;
+		res.locals.lastfmTracks = [];
 		next();
 	},
 	(req, res, next) => { /* get tracks for artists from spotify */

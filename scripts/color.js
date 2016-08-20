@@ -1,7 +1,7 @@
 const Hogan = require("hogan.js");
 
 module.exports = () => {
-	const colors = ["red", "blue"];
+	const colors = ["red", "blue", "orange lighten-2", "cyan"];
 
 	return function(template) {
 		const text = Hogan.compile(template).render(this);
