@@ -1,10 +1,10 @@
 const Hogan = require("hogan.js");
 
 module.exports = class View {
-	constructor(template, init) {
+	constructor(template, init, locals) {
 		this.template = Hogan.compile(template);
 		this.init = init || function() {};
-		this.locals = {};
+		this.locals = locals || {};
 	}
 
 

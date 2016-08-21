@@ -1,4 +1,4 @@
-const View = require("./view.js");
+const View = require("../view.js");
 
 const playlist = require("./playlist.js");
 

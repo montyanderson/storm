@@ -1,6 +1,7 @@
 const Hogan = require("hogan.js");
-const View = require("./view.js");
+const View = require("../view.js");
 const sources = require("./sources.js");
+const color = require("../color.js");
 
 const search = module.exports = new View(`
 	{{#artists}}
@@ -28,6 +29,4 @@ const search = module.exports = new View(`
 
 		sources.render();
 	});
-});
-
-search.locals.color = require("./color.js");
+}, {color});
