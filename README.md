@@ -1,7 +1,7 @@
 # storm
  [![dependencies Status](https://david-dm.org/montyanderson/storm/status.svg)](https://david-dm.org/montyanderson/storm)
 [![Build Status](https://travis-ci.org/montyanderson/storm.svg?branch=master)](https://travis-ci.org/montyanderson/storm)
-> A Spotify playlist generator. Rewrite and successor of [SmartPlay](https://github.com/montyanderson/SmartPlay).
+> :dollar: A Spotify playlist generator. Rewrite and successor of [SmartPlay](https://github.com/montyanderson/SmartPlay).
 
 [![Screenshot](http://i68.tinypic.com/d8k08.png)](http://storm.montyanderson.net)
 
